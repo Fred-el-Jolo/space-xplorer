@@ -5,3 +5,5 @@
 android/build/
 *.apk
 *.aab
+*.apk.idsig
+*.cfg.bak
