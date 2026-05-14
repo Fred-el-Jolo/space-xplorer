@@ -18,11 +18,12 @@ func _read_thrust() -> Vector2:
 		dir.y -= 1.0
 	if Input.is_action_pressed("ship_down"):
 		dir.y += 1.0
-	return dir
+	return dir.normalized()
 
 func _read_depth() -> float:
+	var d := 0.0
 	if Input.is_action_pressed("ship_depth_in"):
-		return -1.0
+		d -= 1.0
 	if Input.is_action_pressed("ship_depth_out"):
-		return 1.0
-	return 0.0
+		d += 1.0
+	return d
