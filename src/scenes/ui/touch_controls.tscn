@@ -1,0 +1,66 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://src/scenes/ui/touch_controls.gd" id="1"]
+
+[node name="TouchControls" type="CanvasLayer"]
+script = ExtResource("1")
+
+[node name="BtnLeft" type="TouchScreenButton" parent="."]
+position = Vector2(60, 580)
+action = "ship_left"
+passby_press = true
+
+[node name="LabelLeft" type="Label" parent="BtnLeft"]
+text = "←"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BtnRight" type="TouchScreenButton" parent="."]
+position = Vector2(180, 580)
+action = "ship_right"
+passby_press = true
+
+[node name="LabelRight" type="Label" parent="BtnRight"]
+text = "→"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BtnUp" type="TouchScreenButton" parent="."]
+position = Vector2(120, 500)
+action = "ship_up"
+passby_press = true
+
+[node name="LabelUp" type="Label" parent="BtnUp"]
+text = "↑"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BtnDown" type="TouchScreenButton" parent="."]
+position = Vector2(120, 660)
+action = "ship_down"
+passby_press = true
+
+[node name="LabelDown" type="Label" parent="BtnDown"]
+text = "↓"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BtnApproach" type="TouchScreenButton" parent="."]
+position = Vector2(1100, 540)
+action = "ship_depth_in"
+passby_press = true
+
+[node name="LabelApproach" type="Label" parent="BtnApproach"]
+text = "▼ Near"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BtnRetreat" type="TouchScreenButton" parent="."]
+position = Vector2(1100, 620)
+action = "ship_depth_out"
+passby_press = true
+
+[node name="LabelRetreat" type="Label" parent="BtnRetreat"]
+text = "▲ Far"
+horizontal_alignment = 1
+vertical_alignment = 1
