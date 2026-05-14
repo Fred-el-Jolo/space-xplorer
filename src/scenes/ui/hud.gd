@@ -7,6 +7,7 @@ extends CanvasLayer
 @onready var landing_label: Label = $LandingLabel
 
 func connect_to_ship(ship: Ship) -> void:
+	assert(ship.data != null, "HUD.connect_to_ship: Ship must have ShipData assigned")
 	fuel_bar.max_value = ship.data.max_fuel
 	hull_bar.max_value = ship.data.max_hull
 	fuel_bar.value = ship.fuel

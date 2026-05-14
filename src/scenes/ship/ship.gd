@@ -11,7 +11,7 @@ var thrust_input: Vector2 = Vector2.ZERO
 var depth_input: float = 0.0
 
 signal fuel_changed(value: float)
-signal hull_changed(value: float)
+signal hull_changed(value: float)  # emitted when damage system is implemented
 signal depth_changed(value: float)
 
 func _ready() -> void:
