@@ -23,7 +23,7 @@ func test_apply_depth_scale_at_200() -> void:
 func test_apply_depth_sets_z_index() -> void:
 	entity.z_depth = 250.0
 	entity._apply_depth()
-	assert_eq(entity.z_index, -250)
+	assert_eq(entity.z_index, -102)
 
 func test_entity_hidden_beyond_max_depth() -> void:
 	entity.z_depth = 15000.0

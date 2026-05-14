@@ -12,7 +12,8 @@ static func compute_y_offset(world_y: float, z_depth: float) -> float:
 	return world_y - (z_depth * PERSPECTIVE_FACTOR)
 
 static func compute_draw_order(z_depth: float) -> int:
-	return -int(z_depth)
+	var clamped: float = clampf(z_depth, 0.0, MAX_Z_DEPTH)
+	return -int(clamped * 4096.0 / MAX_Z_DEPTH)
 
 static func is_visible(z_depth: float) -> bool:
 	return z_depth <= MAX_Z_DEPTH
