@@ -1,0 +1,7 @@
+# Godot cache (auto-generated, not source)
+.godot/
+
+# Android build artefacts
+android/build/
+*.apk
+*.aab
