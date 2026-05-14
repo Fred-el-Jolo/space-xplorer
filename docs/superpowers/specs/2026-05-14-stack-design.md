@@ -10,6 +10,8 @@
 
 Space Xplorer is a solo-developed mobile game inspired by Star Citizen's philosophy of deep simulation and realism, adapted for mobile. It is not a 3D space sim — it is a **2D pseudo-3D space simulation** with Star Citizen's systemic depth, accessible in mobile session lengths.
 
+Narrative influences: **Mass Effect** (authored story beats, characters with depth, meaningful choices) and **Dwarf Fortress** (emergent history generated from simulation — wars, collapses, discoveries become the story). The goal is a world that tells a directed epic while also generating its own history organically.
+
 Key constraints:
 - Solo developer, no prior game engine experience, strong TypeScript/JS background
 - Android primary, iOS later
