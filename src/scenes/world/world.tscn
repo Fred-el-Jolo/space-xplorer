@@ -20,3 +20,8 @@ data = ExtResource("5")
 
 [node name="Camera" type="Camera2D" parent="Ship"]
 position_smoothing_enabled = true
+
+[node name="StarLight" type="PointLight2D" parent="."]
+position = Vector2(-400, -300)
+energy = 1.2
+height = 0.0
