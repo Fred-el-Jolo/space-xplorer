@@ -28,7 +28,7 @@ func _process(delta: float) -> void:
 		_ship.linear_velocity = Vector2.ZERO
 	_ship.z_depth = move_toward(_ship.z_depth, _target.z_depth, BEACON_DEPTH_SPEED * delta)
 	_ship.depth_changed.emit(_ship.z_depth)
-	_target.check_landing_proximity(_ship.z_depth)
+	_target.check_landing_proximity(_ship.position, _ship.z_depth)
 
 func _on_fuel_changed(value: float) -> void:
 	if value <= 0.0 and GameState.has_landed_once and not _active:

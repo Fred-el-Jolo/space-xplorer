@@ -16,13 +16,14 @@ func _ready() -> void:
 		poi.landing_zone_exited.connect(_on_landing_zone_exited)
 	ShipInput.ship = ship
 	hud.connect_to_ship(ship)
+	hud.connect_to_world(ship, _pois)
 	BeaconSystem.register(ship, _pois)
 	BeaconSystem.beacon_activated.connect(func(): hud.show_beacon_active(true))
 	BeaconSystem.beacon_deactivated.connect(func(): hud.show_beacon_active(false))
 
 func _process(_delta: float) -> void:
 	for poi in _pois:
-		poi.check_landing_proximity(ship.z_depth)
+		poi.check_landing_proximity(ship.position, ship.z_depth)
 
 func _on_landing_zone_entered(poi: PointOfInterest) -> void:
 	hud.show_landing_prompt(true)

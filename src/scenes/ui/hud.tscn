@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene load_steps=3 format=3]
 
 [ext_resource type="Script" path="res://src/scenes/ui/hud.gd" id="1"]
+[ext_resource type="Script" path="res://src/scenes/ui/mini_map.gd" id="2"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1")
@@ -9,10 +10,10 @@ script = ExtResource("1")
 offset_left = 20.0
 offset_top = 20.0
 offset_right = 220.0
-offset_bottom = 120.0
+offset_bottom = 150.0
 
 [node name="DepthLabel" type="Label" parent="VBoxContainer"]
-text = "Depth: 5000"
+text = "Depth: 1000"
 
 [node name="FuelLabel" type="Label" parent="VBoxContainer"]
 text = "Fuel"
@@ -32,6 +33,9 @@ min_value = 0.0
 max_value = 100.0
 value = 100.0
 
+[node name="SpeedLabel" type="Label" parent="VBoxContainer"]
+text = "SPD 0"
+
 [node name="LandingLabel" type="Label" parent="."]
 anchor_left = 0.5
 anchor_right = 0.5
@@ -39,6 +43,19 @@ anchor_bottom = 1.0
 anchor_top = 1.0
 offset_top = -60.0
 text = "▼ APPROACH TO LAND"
+visible = false
+
+[node name="NavLabel" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+anchor_top = 1.0
+offset_left = -240.0
+offset_right = 240.0
+offset_top = -105.0
+offset_bottom = -80.0
+horizontal_alignment = 1
+theme_override_colors/font_color = Color(0.9, 0.9, 0.5, 1.0)
 visible = false
 
 [node name="BeaconLabel" type="Label" parent="."]
@@ -54,3 +71,7 @@ offset_bottom = 16.0
 horizontal_alignment = 1
 text = "BEACON ACTIVE — auto-landing"
 theme_override_colors/font_color = Color(1.0, 0.45, 0.1, 1.0)
+
+[node name="MiniMap" type="Node2D" parent="."]
+position = Vector2(1075.0, 15.0)
+script = ExtResource("2")

@@ -7,6 +7,6 @@ script = ExtResource("1")
 max_fuel = 100.0
 max_hull = 100.0
 thrust_power = 500.0
-depth_speed = 50.0
+depth_speed = 150.0
 fuel_burn_rate = 5.0
 linear_damp_value = 1.5

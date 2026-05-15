@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3]
+[gd_scene load_steps=10 format=3]
 
 [ext_resource type="Script" path="res://src/scenes/ui/touch_controls.gd" id="1"]
+[ext_resource type="Script" path="res://src/scenes/ui/button_bg.gd" id="2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1"]
 size = Vector2(100, 100)
@@ -23,48 +24,63 @@ size = Vector2(130, 60)
 [node name="TouchControls" type="CanvasLayer"]
 script = ExtResource("1")
 
+[node name="ButtonBg" type="Node2D" parent="."]
+script = ExtResource("2")
+
 [node name="BtnLeft" type="TouchScreenButton" parent="."]
-position = Vector2(60, 580)
+position = Vector2(10, 580)
 action = "ship_left"
 passby_press = true
 shape = SubResource("RectangleShape2D_1")
 
 [node name="LabelLeft" type="Label" parent="BtnLeft"]
-offset_left = 35.0
-offset_top = 35.0
+offset_right = 100.0
+offset_bottom = 100.0
+horizontal_alignment = 1
+vertical_alignment = 1
+theme_override_font_sizes/font_size = 24
 text = "←"
 
 [node name="BtnRight" type="TouchScreenButton" parent="."]
-position = Vector2(180, 580)
+position = Vector2(230, 580)
 action = "ship_right"
 passby_press = true
 shape = SubResource("RectangleShape2D_2")
 
 [node name="LabelRight" type="Label" parent="BtnRight"]
-offset_left = 35.0
-offset_top = 35.0
+offset_right = 100.0
+offset_bottom = 100.0
+horizontal_alignment = 1
+vertical_alignment = 1
+theme_override_font_sizes/font_size = 24
 text = "→"
 
 [node name="BtnUp" type="TouchScreenButton" parent="."]
-position = Vector2(120, 500)
+position = Vector2(120, 480)
 action = "ship_up"
 passby_press = true
 shape = SubResource("RectangleShape2D_3")
 
 [node name="LabelUp" type="Label" parent="BtnUp"]
-offset_left = 35.0
-offset_top = 35.0
+offset_right = 100.0
+offset_bottom = 100.0
+horizontal_alignment = 1
+vertical_alignment = 1
+theme_override_font_sizes/font_size = 24
 text = "↑"
 
 [node name="BtnDown" type="TouchScreenButton" parent="."]
-position = Vector2(120, 660)
+position = Vector2(120, 610)
 action = "ship_down"
 passby_press = true
 shape = SubResource("RectangleShape2D_4")
 
 [node name="LabelDown" type="Label" parent="BtnDown"]
-offset_left = 35.0
-offset_top = 35.0
+offset_right = 100.0
+offset_bottom = 100.0
+horizontal_alignment = 1
+vertical_alignment = 1
+theme_override_font_sizes/font_size = 24
 text = "↓"
 
 [node name="BtnApproach" type="TouchScreenButton" parent="."]
@@ -74,8 +90,11 @@ passby_press = true
 shape = SubResource("RectangleShape2D_5")
 
 [node name="LabelApproach" type="Label" parent="BtnApproach"]
-offset_left = 15.0
-offset_top = 20.0
+offset_right = 130.0
+offset_bottom = 60.0
+horizontal_alignment = 1
+vertical_alignment = 1
+theme_override_font_sizes/font_size = 16
 text = "▼ Near"
 
 [node name="BtnRetreat" type="TouchScreenButton" parent="."]
@@ -85,6 +104,9 @@ passby_press = true
 shape = SubResource("RectangleShape2D_6")
 
 [node name="LabelRetreat" type="Label" parent="BtnRetreat"]
-offset_left = 15.0
-offset_top = 20.0
+offset_right = 130.0
+offset_bottom = 60.0
+horizontal_alignment = 1
+vertical_alignment = 1
+theme_override_font_sizes/font_size = 16
 text = "▲ Far"

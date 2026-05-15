@@ -3,7 +3,7 @@ extends RigidBody2D
 
 @export var data: ShipData
 
-var z_depth: float = 5000.0
+var z_depth: float = 1000.0
 var fuel: float = 0.0
 var hull: float = 0.0
 

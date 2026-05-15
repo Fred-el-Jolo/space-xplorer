@@ -21,27 +21,27 @@ script = ExtResource("1")
 [node name="POIs" type="Node2D" parent="."]
 
 [node name="KerrathPrime" parent="POIs" instance=ExtResource("3")]
-position = Vector2(400, 250)
+position = Vector2(300, 150)
 data = ExtResource("9")
-z_depth = 500.0
+z_depth = 200.0
 
 [node name="RelayStation7" parent="POIs" instance=ExtResource("3")]
-position = Vector2(1100, 200)
+position = Vector2(1050, 150)
 data = ExtResource("10")
-z_depth = 800.0
+z_depth = 500.0
 
 [node name="OutpostK4" parent="POIs" instance=ExtResource("3")]
-position = Vector2(-100, 550)
+position = Vector2(200, 580)
 data = ExtResource("11")
-z_depth = 2000.0
+z_depth = 1400.0
 
 [node name="HarvestersEnd" parent="POIs" instance=ExtResource("3")]
-position = Vector2(900, 650)
+position = Vector2(1000, 550)
 data = ExtResource("12")
-z_depth = 3500.0
+z_depth = 2000.0
 
 [node name="Ship" parent="." instance=ExtResource("4")]
-position = Vector2(640, 500)
+position = Vector2(640, 360)
 data = ExtResource("5")
 
 [node name="Camera" type="Camera2D" parent="Ship"]
