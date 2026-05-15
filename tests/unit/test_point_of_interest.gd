@@ -16,27 +16,27 @@ func after_each() -> void:
 
 func test_landing_zone_entered_when_ship_in_range() -> void:
 	watch_signals(poi)
-	poi.check_landing_proximity(520.0)  # 520 <= 500 + 50
+	poi.check_landing_proximity(Vector2.ZERO, 520.0)  # 520 <= 500 + 50
 	assert_signal_emitted(poi, "landing_zone_entered")
 
 func test_landing_zone_not_entered_when_ship_far() -> void:
 	watch_signals(poi)
-	poi.check_landing_proximity(600.0)  # 600 > 500 + 50
+	poi.check_landing_proximity(Vector2.ZERO, 600.0)  # 600 > 500 + 50
 	assert_signal_not_emitted(poi, "landing_zone_entered")
 
 func test_landing_zone_exited_after_enter_then_leave() -> void:
-	poi.check_landing_proximity(520.0)  # enter
+	poi.check_landing_proximity(Vector2.ZERO, 520.0)  # enter
 	watch_signals(poi)
-	poi.check_landing_proximity(600.0)  # exit
+	poi.check_landing_proximity(Vector2.ZERO, 600.0)  # exit
 	assert_signal_emitted(poi, "landing_zone_exited")
 
 func test_signal_carries_poi_reference() -> void:
 	watch_signals(poi)
-	poi.check_landing_proximity(520.0)
+	poi.check_landing_proximity(Vector2.ZERO, 520.0)
 	assert_signal_emitted_with_parameters(poi, "landing_zone_entered", [poi])
 
 func test_no_signal_without_data() -> void:
 	poi.data = null
 	watch_signals(poi)
-	poi.check_landing_proximity(520.0)
+	poi.check_landing_proximity(Vector2.ZERO, 520.0)
 	assert_signal_not_emitted(poi, "landing_zone_entered")
