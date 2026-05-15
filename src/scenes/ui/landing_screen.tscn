@@ -1,0 +1,47 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://src/scenes/ui/landing_screen.gd" id="1"]
+
+[node name="LandingScreen" type="CanvasLayer"]
+visible = false
+script = ExtResource("1")
+
+[node name="Panel" type="Panel" parent="."]
+anchor_left = 0.2
+anchor_top = 0.1
+anchor_right = 0.8
+anchor_bottom = 0.9
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBox" type="VBoxContainer" parent="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = 32.0
+offset_right = -32.0
+offset_bottom = -32.0
+theme_override_constants/separation = 16
+
+[node name="TypeBadge" type="Label" parent="Panel/VBox"]
+text = "PLANET"
+theme_override_font_sizes/font_size = 13
+
+[node name="NameLabel" type="Label" parent="Panel/VBox"]
+text = "Unknown"
+theme_override_font_sizes/font_size = 36
+
+[node name="DescriptionLabel" type="Label" parent="Panel/VBox"]
+text = ""
+autowrap_mode = 3
+size_flags_vertical = 3
+
+[node name="RefueledLabel" type="Label" parent="Panel/VBox"]
+visible = false
+text = "Fuel replenished."
+theme_override_colors/font_color = Color(0.2, 0.8, 0.3, 1.0)
+
+[node name="DepartButton" type="Button" parent="Panel/VBox"]
+text = "Depart"
+
+[connection signal="pressed" from="Panel/VBox/DepartButton" to="." method="_on_depart_pressed"]
