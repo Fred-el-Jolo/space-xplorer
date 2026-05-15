@@ -5,7 +5,7 @@ const BEACON_DEPTH_SPEED: float = 300.0
 
 var _ship: Ship = null
 var _pois: Array = []
-var _active: bool = false
+var active: bool = false
 var _target: PointOfInterest = null
 
 signal beacon_activated
@@ -19,7 +19,7 @@ func register(ship: Ship, pois: Array) -> void:
 	ship.fuel_changed.connect(_on_fuel_changed)
 
 func _process(delta: float) -> void:
-	if not _active or _target == null or _ship == null:
+	if not active or _target == null or _ship == null:
 		return
 	var dir: Vector2 = _target.position - _ship.position
 	if dir.length() > 10.0:
@@ -31,19 +31,19 @@ func _process(delta: float) -> void:
 	_target.check_landing_proximity(_ship.position, _ship.z_depth)
 
 func _on_fuel_changed(value: float) -> void:
-	if value <= 0.0 and GameState.has_landed_once and not _active:
+	if value <= 0.0 and GameState.has_landed_once and not active:
 		_activate()
 
 func _activate() -> void:
 	_target = find_nearest(_ship.position, _ship.z_depth, _pois)
 	if _target == null:
 		return
-	_active = true
+	active = true
 	ShipInput.suspended = true
 	beacon_activated.emit()
 
 func deactivate() -> void:
-	_active = false
+	active = false
 	_target = null
 	beacon_deactivated.emit()
 
