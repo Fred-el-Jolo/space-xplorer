@@ -49,12 +49,6 @@ func test_depth_clamps_at_maximum() -> void:
 	ship._physics_process(1.0)
 	assert_eq(ship.z_depth, DepthSystem.MAX_Z_DEPTH)
 
-func test_fuel_not_depleted_before_first_landing() -> void:
-	GameState.has_landed_once = false
-	ship.thrust_input = Vector2(1.0, 0.0)
-	ship._physics_process(1.0)
-	assert_eq(ship.fuel, 100.0)
-
 func test_fuel_depletes_after_first_landing() -> void:
 	GameState.has_landed_once = true
 	ship.thrust_input = Vector2(1.0, 0.0)
@@ -67,3 +61,9 @@ func test_fuel_unchanged_when_empty() -> void:
 	ship.thrust_input = Vector2(1.0, 0.0)
 	ship._physics_process(1.0)
 	assert_eq(ship.fuel, 0.0)
+
+func test_fuel_depletes_even_before_first_landing() -> void:
+	GameState.has_landed_once = false
+	ship.thrust_input = Vector2(1.0, 0.0)
+	ship._physics_process(1.0)
+	assert_lt(ship.fuel, 100.0)
