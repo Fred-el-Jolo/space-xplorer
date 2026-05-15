@@ -12,6 +12,8 @@ signal beacon_activated
 signal beacon_deactivated
 
 func register(ship: Ship, pois: Array) -> void:
+	if _ship and _ship.fuel_changed.is_connected(_on_fuel_changed):
+		_ship.fuel_changed.disconnect(_on_fuel_changed)
 	_ship = ship
 	_pois = pois
 	ship.fuel_changed.connect(_on_fuel_changed)
@@ -22,6 +24,8 @@ func _process(delta: float) -> void:
 	var dir: Vector2 = _target.position - _ship.position
 	if dir.length() > 10.0:
 		_ship.linear_velocity = dir.normalized() * BEACON_SPEED
+	else:
+		_ship.linear_velocity = Vector2.ZERO
 	_ship.z_depth = move_toward(_ship.z_depth, _target.z_depth, BEACON_DEPTH_SPEED * delta)
 	_ship.depth_changed.emit(_ship.z_depth)
 	_target.check_landing_proximity(_ship.z_depth)
