@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="POIData" format=3]
+
+[ext_resource type="Script" path="res://src/resources/poi_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+type = 1
+poi_name = "Relay Station 7"
+description = "A UEE relay converted into a traveller rest stop. Fuel, minimal repairs, and a vending machine."
+landing_threshold = 60.0

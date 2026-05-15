@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="POIData" format=3]
+
+[ext_resource type="Script" path="res://src/resources/poi_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+type = 3
+poi_name = "Harvester's End"
+description = "A derelict ore hauler, drifting for decades. Salvagers occasionally camp here between runs."
+landing_threshold = 45.0

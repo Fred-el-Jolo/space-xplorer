@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="POIData" format=3]
+
+[ext_resource type="Script" path="res://src/resources/poi_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+type = 2
+poi_name = "Outpost K-4"
+description = "A mining camp wedged into an asteroid. Rough crowd, cheap fuel, no questions asked."
+landing_threshold = 50.0
