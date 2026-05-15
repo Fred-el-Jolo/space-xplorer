@@ -34,6 +34,7 @@ enabled=PackedStringArray("res://addons/gut/plugin.cfg")
 [autoload]
 
 ShipInput="*res://src/systems/ship_input.gd"
+GameState="*res://src/systems/game_state.gd"
 
 [input]
 
