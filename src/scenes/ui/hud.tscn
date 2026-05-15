@@ -40,3 +40,17 @@ anchor_top = 1.0
 offset_top = -60.0
 text = "▼ APPROACH TO LAND"
 visible = false
+
+[node name="BeaconLabel" type="Label" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.6
+anchor_right = 0.5
+anchor_bottom = 0.6
+offset_left = -160.0
+offset_right = 160.0
+offset_top = -16.0
+offset_bottom = 16.0
+horizontal_alignment = 1
+text = "BEACON ACTIVE — auto-landing"
+theme_override_colors/font_color = Color(1.0, 0.45, 0.1, 1.0)

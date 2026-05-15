@@ -5,6 +5,7 @@ extends CanvasLayer
 @onready var fuel_bar: ProgressBar = $VBoxContainer/FuelBar
 @onready var hull_bar: ProgressBar = $VBoxContainer/HullBar
 @onready var landing_label: Label = $LandingLabel
+@onready var beacon_label: Label = $BeaconLabel
 
 func connect_to_ship(ship: Ship) -> void:
 	assert(ship.data != null, "HUD.connect_to_ship: Ship must have ShipData assigned")
@@ -19,6 +20,9 @@ func connect_to_ship(ship: Ship) -> void:
 
 func show_landing_prompt(show: bool) -> void:
 	landing_label.visible = show
+
+func show_beacon_active(active: bool) -> void:
+	beacon_label.visible = active
 
 func _on_fuel_changed(value: float) -> void:
 	fuel_bar.value = value
