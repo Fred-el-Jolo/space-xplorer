@@ -1,9 +1,10 @@
 extends Node
 
 var ship: Ship = null
+var suspended: bool = false
 
 func _process(_delta: float) -> void:
-	if not ship:
+	if not ship or suspended:
 		return
 	ship.thrust_input = _read_thrust()
 	ship.depth_input = _read_depth()

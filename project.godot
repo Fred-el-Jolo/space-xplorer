@@ -35,6 +35,7 @@ enabled=PackedStringArray("res://addons/gut/plugin.cfg")
 
 ShipInput="*res://src/systems/ship_input.gd"
 GameState="*res://src/systems/game_state.gd"
+BeaconSystem="*res://src/systems/beacon_system.gd"
 
 [input]
 
