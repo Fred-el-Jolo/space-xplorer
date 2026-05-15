@@ -31,7 +31,7 @@ func _process(delta: float) -> void:
 	_target.check_landing_proximity(_ship.position, _ship.z_depth)
 
 func _on_fuel_changed(value: float) -> void:
-	if value <= 0.0 and GameState.has_landed_once and not active:
+	if value <= 0.0 and not active:
 		_activate()
 
 func _activate() -> void:
