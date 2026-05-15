@@ -1,4 +1,6 @@
-[gd_scene format=3]
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://src/scenes/world/star_field.gd" id="1"]
 
 [node name="SpaceBackground" type="ParallaxBackground"]
 
@@ -18,6 +20,15 @@ motion_mirroring = Vector2(2560, 1440)
 color = Color(0.031, 0.031, 0.125, 1)
 size = Vector2(2560, 1440)
 
+[node name="Stars1" type="Node2D" parent="Layer1"]
+script = ExtResource("1")
+star_count = 80
+area = Vector2(2560, 1440)
+base_color = Color(1, 1, 1, 1)
+min_size = 0.5
+max_size = 1.0
+seed_val = 1
+
 [node name="Layer2" type="ParallaxLayer" parent="."]
 motion_scale = Vector2(0.12, 0.12)
 motion_mirroring = Vector2(2560, 1440)
@@ -26,6 +37,11 @@ motion_mirroring = Vector2(2560, 1440)
 color = Color(0.039, 0.039, 0.157, 1)
 size = Vector2(2560, 1440)
 
+[node name="Nebula1" type="ColorRect" parent="Layer2"]
+color = Color(0.05, 0.08, 0.25, 0.07)
+size = Vector2(800, 400)
+position = Vector2(300, 200)
+
 [node name="Layer3" type="ParallaxLayer" parent="."]
 motion_scale = Vector2(0.25, 0.25)
 motion_mirroring = Vector2(2560, 1440)
@@ -33,6 +49,20 @@ motion_mirroring = Vector2(2560, 1440)
 [node name="Bg3" type="ColorRect" parent="Layer3"]
 color = Color(0.051, 0.031, 0.125, 1)
 size = Vector2(2560, 1440)
+
+[node name="Stars3" type="Node2D" parent="Layer3"]
+script = ExtResource("1")
+star_count = 150
+area = Vector2(2560, 1440)
+base_color = Color(1, 0.97, 0.9, 1)
+min_size = 0.5
+max_size = 1.5
+seed_val = 2
+
+[node name="Nebula2" type="ColorRect" parent="Layer3"]
+color = Color(0.12, 0.04, 0.18, 0.06)
+size = Vector2(600, 500)
+position = Vector2(1400, 600)
 
 [node name="Layer4" type="ParallaxLayer" parent="."]
 motion_scale = Vector2(0.5, 0.5)
@@ -49,3 +79,12 @@ motion_mirroring = Vector2(2560, 1440)
 [node name="Bg5" type="ColorRect" parent="Layer5"]
 color = Color(0.02, 0.02, 0.02, 1)
 size = Vector2(2560, 1440)
+
+[node name="Stars5" type="Node2D" parent="Layer5"]
+script = ExtResource("1")
+star_count = 40
+area = Vector2(2560, 1440)
+base_color = Color(0.85, 0.9, 1, 1)
+min_size = 1.0
+max_size = 2.0
+seed_val = 3
