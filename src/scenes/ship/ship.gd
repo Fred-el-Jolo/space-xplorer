@@ -26,11 +26,14 @@ func _physics_process(delta: float) -> void:
 	_apply_depth_visual()
 
 func _handle_thrust(delta: float) -> void:
-	if thrust_input == Vector2.ZERO or fuel <= 0.0:
+	if thrust_input == Vector2.ZERO:
+		return
+	if GameState.has_landed_once and fuel <= 0.0:
 		return
 	apply_central_force(thrust_input.normalized() * data.thrust_power)
-	fuel = maxf(0.0, fuel - data.fuel_burn_rate * delta)
-	fuel_changed.emit(fuel)
+	if GameState.has_landed_once:
+		fuel = maxf(0.0, fuel - data.fuel_burn_rate * delta)
+		fuel_changed.emit(fuel)
 
 func _handle_depth(delta: float) -> void:
 	if depth_input == 0.0:
