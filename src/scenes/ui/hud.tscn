@@ -36,13 +36,16 @@ value = 100.0
 [node name="SpeedLabel" type="Label" parent="VBoxContainer"]
 text = "SPD 0"
 
-[node name="LandingLabel" type="Label" parent="."]
+[node name="LandButton" type="Button" parent="."]
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 1.0
 anchor_top = 1.0
-offset_top = -60.0
-text = "▼ APPROACH TO LAND"
+offset_left = -80.0
+offset_right = 80.0
+offset_top = -80.0
+offset_bottom = -45.0
+text = "▼ LAND"
 visible = false
 
 [node name="NavLabel" type="Label" parent="."]

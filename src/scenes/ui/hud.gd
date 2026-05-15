@@ -5,13 +5,18 @@ extends CanvasLayer
 @onready var fuel_bar: ProgressBar = $VBoxContainer/FuelBar
 @onready var hull_bar: ProgressBar = $VBoxContainer/HullBar
 @onready var speed_label: Label = $VBoxContainer/SpeedLabel
-@onready var landing_label: Label = $LandingLabel
+@onready var land_button: Button = $LandButton
 @onready var nav_label: Label = $NavLabel
 @onready var beacon_label: Label = $BeaconLabel
 @onready var mini_map: MiniMap = $MiniMap
 
+signal land_requested
+
 var _ship: Ship = null
 var _pois: Array[PointOfInterest] = []
+
+func _ready() -> void:
+	land_button.pressed.connect(func(): land_requested.emit())
 
 func connect_to_ship(ship: Ship) -> void:
 	assert(ship.data != null, "HUD.connect_to_ship: Ship must have ShipData assigned")
@@ -30,8 +35,8 @@ func connect_to_world(ship: Ship, pois: Array[PointOfInterest]) -> void:
 	mini_map.connect_to_world(ship, pois)
 	nav_label.visible = not pois.is_empty()
 
-func show_landing_prompt(show: bool) -> void:
-	landing_label.visible = show
+func show_land_button(show: bool) -> void:
+	land_button.visible = show
 
 func show_beacon_active(active: bool) -> void:
 	beacon_label.visible = active
