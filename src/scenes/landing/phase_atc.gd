@@ -34,8 +34,11 @@ func _build_ui() -> void:
 	var panel_size := Vector2(560.0, 420.0)
 	_panel = PanelContainer.new()
 	_panel.custom_minimum_size = panel_size
+	_panel.size = panel_size
 	_panel.position = (get_viewport().get_visible_rect().size - panel_size) / 2.0
 	add_child(_panel)
+
+	bg.mouse_filter = Control.MOUSE_FILTER_IGNORE
 
 	_vbox = VBoxContainer.new()
 	_vbox.add_theme_constant_override("separation", 16)
