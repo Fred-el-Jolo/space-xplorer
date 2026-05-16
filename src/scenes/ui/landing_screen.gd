@@ -9,7 +9,14 @@ signal departed
 @onready var refueled_label: Label = $Panel/VBox/RefueledLabel
 @onready var depart_button: Button = $Panel/VBox/DepartButton
 
+const _PANEL_SIZE := Vector2(700.0, 520.0)
+
 var _ship: Ship = null
+
+func _ready() -> void:
+    $Background.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+    $Panel.size = _PANEL_SIZE
+    $Panel.position = (get_viewport().get_visible_rect().size - _PANEL_SIZE) / 2.0
 
 const TYPE_LABELS: Dictionary = {
     POIData.POIType.PLANET:   "PLANET",
