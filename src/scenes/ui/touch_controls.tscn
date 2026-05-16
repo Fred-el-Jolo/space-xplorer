@@ -28,90 +28,96 @@ script = ExtResource("1")
 script = ExtResource("2")
 
 [node name="BtnLeft" type="TouchScreenButton" parent="."]
-position = Vector2(10, 580)
+position = Vector2(60, 630)
 action = "ship_left"
 passby_press = true
 shape = SubResource("RectangleShape2D_1")
-shape_centered = false
 
 [node name="LabelLeft" type="Label" parent="BtnLeft"]
-offset_right = 100.0
-offset_bottom = 100.0
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
 horizontal_alignment = 1
 vertical_alignment = 1
 theme_override_font_sizes/font_size = 24
 text = "←"
 
 [node name="BtnRight" type="TouchScreenButton" parent="."]
-position = Vector2(230, 580)
+position = Vector2(280, 630)
 action = "ship_right"
 passby_press = true
 shape = SubResource("RectangleShape2D_2")
-shape_centered = false
 
 [node name="LabelRight" type="Label" parent="BtnRight"]
-offset_right = 100.0
-offset_bottom = 100.0
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
 horizontal_alignment = 1
 vertical_alignment = 1
 theme_override_font_sizes/font_size = 24
 text = "→"
 
 [node name="BtnUp" type="TouchScreenButton" parent="."]
-position = Vector2(120, 480)
+position = Vector2(170, 530)
 action = "ship_up"
 passby_press = true
 shape = SubResource("RectangleShape2D_3")
-shape_centered = false
 
 [node name="LabelUp" type="Label" parent="BtnUp"]
-offset_right = 100.0
-offset_bottom = 100.0
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
 horizontal_alignment = 1
 vertical_alignment = 1
 theme_override_font_sizes/font_size = 24
 text = "↑"
 
 [node name="BtnDown" type="TouchScreenButton" parent="."]
-position = Vector2(120, 610)
+position = Vector2(170, 660)
 action = "ship_down"
 passby_press = true
 shape = SubResource("RectangleShape2D_4")
-shape_centered = false
 
 [node name="LabelDown" type="Label" parent="BtnDown"]
-offset_right = 100.0
-offset_bottom = 100.0
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
 horizontal_alignment = 1
 vertical_alignment = 1
 theme_override_font_sizes/font_size = 24
 text = "↓"
 
 [node name="BtnApproach" type="TouchScreenButton" parent="."]
-position = Vector2(1100, 540)
+position = Vector2(1165, 570)
 action = "ship_depth_in"
 passby_press = true
 shape = SubResource("RectangleShape2D_5")
-shape_centered = false
 
 [node name="LabelApproach" type="Label" parent="BtnApproach"]
-offset_right = 130.0
-offset_bottom = 60.0
+offset_left = -65.0
+offset_top = -30.0
+offset_right = 65.0
+offset_bottom = 30.0
 horizontal_alignment = 1
 vertical_alignment = 1
 theme_override_font_sizes/font_size = 16
 text = "▼ Near"
 
 [node name="BtnRetreat" type="TouchScreenButton" parent="."]
-position = Vector2(1100, 620)
+position = Vector2(1165, 650)
 action = "ship_depth_out"
 passby_press = true
 shape = SubResource("RectangleShape2D_6")
-shape_centered = false
 
 [node name="LabelRetreat" type="Label" parent="BtnRetreat"]
-offset_right = 130.0
-offset_bottom = 60.0
+offset_left = -65.0
+offset_top = -30.0
+offset_right = 65.0
+offset_bottom = 30.0
 horizontal_alignment = 1
 vertical_alignment = 1
 theme_override_font_sizes/font_size = 16
