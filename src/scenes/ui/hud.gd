@@ -9,6 +9,7 @@ extends CanvasLayer
 @onready var nav_label: Label = $NavLabel
 @onready var beacon_label: Label = $BeaconLabel
 @onready var mini_map: MiniMap = $MiniMap
+@onready var depth_radar_strip: DepthRadarStrip = $DepthRadarStrip
 
 signal land_requested
 
@@ -33,6 +34,7 @@ func connect_to_ship(ship: Ship) -> void:
 func connect_to_world(ship: Ship, pois: Array[PointOfInterest]) -> void:
 	_pois = pois
 	mini_map.connect_to_world(ship, pois)
+	depth_radar_strip.connect_to_world(ship, pois)
 	nav_label.visible = not pois.is_empty()
 
 func show_land_button(show: bool) -> void:
