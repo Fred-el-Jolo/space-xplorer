@@ -12,6 +12,7 @@ const ATC_LINES: Array[String] = [
 	"Reduce speed below 80 u/s on entry.",
 ]
 const LINE_DELAY: float = 0.5
+const AUTO_ADVANCE_DELAY: float = 6.0
 
 var _ctx: LandingContext = null
 var _panel: PanelContainer
@@ -19,6 +20,7 @@ var _vbox: VBoxContainer
 var _comms_label: RichTextLabel
 var _schematic: Control
 var _ack_button: Button
+var _auto_timer: SceneTreeTimer = null
 
 func begin(ctx: LandingContext) -> void:
 	_ctx = ctx
@@ -31,7 +33,7 @@ func _build_ui() -> void:
 	bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	add_child(bg)
 
-	var panel_size := Vector2(560.0, 420.0)
+	var panel_size := Vector2(560.0, 480.0)
 	_panel = PanelContainer.new()
 	_panel.custom_minimum_size = panel_size
 	_panel.size = panel_size
@@ -95,8 +97,13 @@ func _append_line(line: String) -> void:
 func _reveal_schematic() -> void:
 	_schematic.visible = true
 	_ack_button.visible = true
+	_auto_timer = get_tree().create_timer(AUTO_ADVANCE_DELAY)
+	_auto_timer.timeout.connect(_on_acknowledged, CONNECT_ONE_SHOT)
 
 func _on_acknowledged() -> void:
+	if _auto_timer != null:
+		_auto_timer.timeout.disconnect(_on_acknowledged)
+		_auto_timer = null
 	phase_completed.emit()
 
 
