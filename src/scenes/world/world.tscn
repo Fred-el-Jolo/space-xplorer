@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3]
+[gd_scene load_steps=15 format=3]
 
 [ext_resource type="Script" path="res://src/scenes/world/world.gd" id="1"]
 [ext_resource type="PackedScene" path="res://src/scenes/world/space_background.tscn" id="2"]
@@ -12,6 +12,7 @@
 [ext_resource type="Resource" path="res://src/resources/relay_station_7.tres" id="10"]
 [ext_resource type="Resource" path="res://src/resources/asteroid_outpost_k4.tres" id="11"]
 [ext_resource type="Resource" path="res://src/resources/derelict_harvester.tres" id="12"]
+[ext_resource type="Script" path="res://src/scenes/landing/landing_orchestrator.gd" id="13"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1")
@@ -57,3 +58,6 @@ height = 0.0
 [node name="TouchControls" parent="." instance=ExtResource("7")]
 
 [node name="LandingScreen" parent="." instance=ExtResource("8")]
+
+[node name="LandingOrchestrator" type="Node" parent="."]
+script = ExtResource("13")

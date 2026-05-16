@@ -5,6 +5,7 @@ const DEPTH_AUTO_SPEED: float = 350.0
 @onready var ship: Ship = $Ship
 @onready var hud: HUD = $HUD
 @onready var landing_screen: LandingScreen = $LandingScreen
+@onready var landing_orchestrator: LandingOrchestrator = $LandingOrchestrator
 
 var _pois: Array[PointOfInterest] = []
 var _poi_in_range: PointOfInterest = null
@@ -21,6 +22,7 @@ func _ready() -> void:
 	hud.connect_to_ship(ship)
 	hud.connect_to_world(ship, _pois)
 	hud.land_requested.connect(_on_land_requested)
+	landing_orchestrator.init(landing_screen)
 	BeaconSystem.register(ship, _pois)
 	BeaconSystem.beacon_activated.connect(func(): hud.show_beacon_active(true))
 	BeaconSystem.beacon_deactivated.connect(func(): hud.show_beacon_active(false))
@@ -66,5 +68,5 @@ func _on_landing_zone_exited(_poi: PointOfInterest) -> void:
 func _on_land_requested() -> void:
 	if _poi_in_range == null:
 		return
-	landing_screen.show_for(_poi_in_range, ship)
 	hud.show_land_button(false)
+	landing_orchestrator.begin_landing(_poi_in_range, ship)
