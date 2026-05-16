@@ -42,6 +42,6 @@ text = "Fuel replenished."
 theme_override_colors/font_color = Color(0.2, 0.8, 0.3, 1.0)
 
 [node name="DepartButton" type="Button" parent="Panel/VBox"]
-text = "Depart"
+text = "Take Off"
 
 [connection signal="pressed" from="Panel/VBox/DepartButton" to="." method="_on_depart_pressed"]

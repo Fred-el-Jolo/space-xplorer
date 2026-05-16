@@ -7,6 +7,8 @@ extends CanvasLayer
 @onready var refueled_label: Label = $Panel/VBox/RefueledLabel
 @onready var depart_button: Button = $Panel/VBox/DepartButton
 
+var _ship: Ship = null
+
 const TYPE_LABELS: Dictionary = {
     POIData.POIType.PLANET:   "PLANET",
     POIData.POIType.STATION:  "SPACE STATION",
@@ -22,6 +24,7 @@ const TYPE_COLORS: Dictionary = {
 }
 
 func show_for(poi: PointOfInterest, ship: Ship) -> void:
+    _ship = ship
     type_badge.text = TYPE_LABELS[poi.data.type]
     type_badge.add_theme_color_override("font_color", TYPE_COLORS[poi.data.type])
     name_label.text = poi.data.poi_name
@@ -30,6 +33,7 @@ func show_for(poi: PointOfInterest, ship: Ship) -> void:
     if not GameState.has_landed_once:
         GameState.has_landed_once = true
     BeaconSystem.deactivate()
+    ship.set_landed(true)
     ShipInput.suspended = true
     visible = true
 
@@ -42,5 +46,7 @@ func _refuel(ship: Ship) -> void:
     tween.tween_callback(func(): refueled_label.visible = false)
 
 func _on_depart_pressed() -> void:
+    if _ship:
+        _ship.set_landed(false)
     ShipInput.suspended = false
     visible = false

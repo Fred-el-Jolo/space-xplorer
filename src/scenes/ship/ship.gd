@@ -44,6 +44,15 @@ func _handle_depth(delta: float) -> void:
 	)
 	depth_changed.emit(z_depth)
 
+func set_landed(landed: bool) -> void:
+	if landed:
+		thrust_input = Vector2.ZERO
+		depth_input = 0.0
+		linear_velocity = Vector2.ZERO
+		freeze = true
+	else:
+		freeze = false
+
 func _apply_depth_visual() -> void:
 	scale = Vector2.ONE * DepthSystem.compute_scale(z_depth)
 	z_index = DepthSystem.compute_draw_order(z_depth)
