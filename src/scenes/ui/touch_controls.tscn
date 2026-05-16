@@ -32,6 +32,7 @@ position = Vector2(10, 580)
 action = "ship_left"
 passby_press = true
 shape = SubResource("RectangleShape2D_1")
+shape_centered = false
 
 [node name="LabelLeft" type="Label" parent="BtnLeft"]
 offset_right = 100.0
@@ -46,6 +47,7 @@ position = Vector2(230, 580)
 action = "ship_right"
 passby_press = true
 shape = SubResource("RectangleShape2D_2")
+shape_centered = false
 
 [node name="LabelRight" type="Label" parent="BtnRight"]
 offset_right = 100.0
@@ -60,6 +62,7 @@ position = Vector2(120, 480)
 action = "ship_up"
 passby_press = true
 shape = SubResource("RectangleShape2D_3")
+shape_centered = false
 
 [node name="LabelUp" type="Label" parent="BtnUp"]
 offset_right = 100.0
@@ -74,6 +77,7 @@ position = Vector2(120, 610)
 action = "ship_down"
 passby_press = true
 shape = SubResource("RectangleShape2D_4")
+shape_centered = false
 
 [node name="LabelDown" type="Label" parent="BtnDown"]
 offset_right = 100.0
@@ -88,6 +92,7 @@ position = Vector2(1100, 540)
 action = "ship_depth_in"
 passby_press = true
 shape = SubResource("RectangleShape2D_5")
+shape_centered = false
 
 [node name="LabelApproach" type="Label" parent="BtnApproach"]
 offset_right = 130.0
@@ -102,6 +107,7 @@ position = Vector2(1100, 620)
 action = "ship_depth_out"
 passby_press = true
 shape = SubResource("RectangleShape2D_6")
+shape_centered = false
 
 [node name="LabelRetreat" type="Label" parent="BtnRetreat"]
 offset_right = 130.0
