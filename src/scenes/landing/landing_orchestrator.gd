@@ -20,6 +20,7 @@ func init(landing_screen: LandingScreen) -> void:
 	_landing_screen = landing_screen
 
 func begin_landing(poi: PointOfInterest, ship: Ship) -> void:
+	assert(_landing_screen != null, "LandingOrchestrator.init() must be called before begin_landing()")
 	_ctx = LandingContext.new()
 	_ctx.poi = poi
 	_ctx.ship = ship
@@ -75,9 +76,12 @@ func _instantiate_phase(phase_num: int) -> Node:
 		push_error("LandingOrchestrator: unknown phase %d" % phase_num)
 		return Node.new()
 	var script: GDScript = load(_PHASE_PATHS[phase_num])
+	if script == null:
+		push_error("LandingOrchestrator: failed to load phase %d from %s" % [phase_num, _PHASE_PATHS[phase_num]])
+		ShipInput.suspended = false
+		return Node.new()
 	return script.new()
 
 func _finish() -> void:
-	ShipInput.suspended = false
 	_landing_screen.show_for(_ctx.poi, _ctx.ship)
 	landing_succeeded.emit()
