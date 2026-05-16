@@ -31,9 +31,10 @@ func _build_ui() -> void:
 	bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	add_child(bg)
 
+	var panel_size := Vector2(560.0, 420.0)
 	_panel = PanelContainer.new()
-	_panel.set_anchors_preset(Control.PRESET_CENTER)
-	_panel.custom_minimum_size = Vector2(560.0, 420.0)
+	_panel.custom_minimum_size = panel_size
+	_panel.position = (get_viewport().get_visible_rect().size - panel_size) / 2.0
 	add_child(_panel)
 
 	_vbox = VBoxContainer.new()
