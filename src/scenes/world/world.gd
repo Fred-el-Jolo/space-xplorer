@@ -1,5 +1,7 @@
 extends Node2D
 
+const DEPTH_AUTO_SPEED: float = 350.0
+
 @onready var ship: Ship = $Ship
 @onready var hud: HUD = $HUD
 @onready var landing_screen: LandingScreen = $LandingScreen
@@ -23,9 +25,32 @@ func _ready() -> void:
 	BeaconSystem.beacon_activated.connect(func(): hud.show_beacon_active(true))
 	BeaconSystem.beacon_deactivated.connect(func(): hud.show_beacon_active(false))
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	for poi in _pois:
 		poi.check_landing_proximity(ship.position, ship.z_depth)
+	_auto_approach_depth(delta)
+
+func _auto_approach_depth(delta: float) -> void:
+	if BeaconSystem.active or ShipInput.suspended or ship.freeze or ship.depth_input != 0.0:
+		return
+	var nearest := _nearest_poi_by_xy()
+	if nearest == null:
+		return
+	var new_depth := move_toward(ship.z_depth, nearest.z_depth, DEPTH_AUTO_SPEED * delta)
+	if new_depth == ship.z_depth:
+		return
+	ship.z_depth = new_depth
+	ship.depth_changed.emit(ship.z_depth)
+
+func _nearest_poi_by_xy() -> PointOfInterest:
+	var nearest: PointOfInterest = null
+	var min_d := INF
+	for poi: PointOfInterest in _pois:
+		var d := ship.position.distance_to(poi.position)
+		if d < min_d:
+			min_d = d
+			nearest = poi
+	return nearest
 
 func _on_landing_zone_entered(poi: PointOfInterest) -> void:
 	_poi_in_range = poi
