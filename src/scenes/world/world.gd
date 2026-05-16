@@ -23,6 +23,8 @@ func _ready() -> void:
 	hud.connect_to_world(ship, _pois)
 	hud.land_requested.connect(_on_land_requested)
 	landing_orchestrator.init(landing_screen)
+	landing_orchestrator.landing_succeeded.connect(func(): hud.visible = false)
+	landing_screen.departed.connect(func(): hud.visible = true)
 	BeaconSystem.register(ship, _pois)
 	BeaconSystem.beacon_activated.connect(func(): hud.show_beacon_active(true))
 	BeaconSystem.beacon_deactivated.connect(func(): hud.show_beacon_active(false))
@@ -57,6 +59,7 @@ func _nearest_poi_by_xy() -> PointOfInterest:
 func _on_landing_zone_entered(poi: PointOfInterest) -> void:
 	_poi_in_range = poi
 	if BeaconSystem.active:
+		hud.visible = false
 		landing_screen.show_for(poi, ship)
 	else:
 		hud.show_land_button(true)

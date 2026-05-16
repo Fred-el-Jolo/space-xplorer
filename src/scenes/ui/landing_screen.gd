@@ -1,6 +1,8 @@
 class_name LandingScreen
 extends CanvasLayer
 
+signal departed
+
 @onready var type_badge: Label = $Panel/VBox/TypeBadge
 @onready var name_label: Label = $Panel/VBox/NameLabel
 @onready var description_label: Label = $Panel/VBox/DescriptionLabel
@@ -50,3 +52,4 @@ func _on_depart_pressed() -> void:
         _ship.set_landed(false)
     ShipInput.suspended = false
     visible = false
+    departed.emit()
