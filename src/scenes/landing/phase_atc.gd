@@ -25,7 +25,7 @@ var _auto_timer: SceneTreeTimer = null
 func begin(ctx: LandingContext) -> void:
 	_ctx = ctx
 	_build_ui()
-	_start_typewriter()
+	_run_sequence()
 
 func _build_ui() -> void:
 	var bg := ColorRect.new()
@@ -80,16 +80,14 @@ func _build_schematic() -> Control:
 	container.add_child(draw_node)
 	return container
 
-func _start_typewriter() -> void:
-	var tween := create_tween()
-	tween.set_sequential(true)
+func _run_sequence() -> void:
 	for i in ATC_LINES.size():
 		var line: String = ATC_LINES[i]
 		if line.contains("%d"):
 			line = line % _ctx.assigned_pad
-		tween.tween_callback(_append_line.bind(line))
-		tween.tween_interval(LINE_DELAY)
-	tween.tween_callback(_reveal_schematic)
+		_append_line(line)
+		await get_tree().create_timer(LINE_DELAY).timeout
+	_reveal_schematic()
 
 func _append_line(line: String) -> void:
 	_comms_label.append_text("[color=#88ccff]> %s[/color]\n" % line)
